@@ -13,4 +13,8 @@
     <sql id="selectSubject">
         select id, title, parent_id, sort, gmt_create, gmt_modified from
     </sql>
+    <select id="getgetAllTwoSubject" resultMap="Subject">
+        <include refid="selectSubject"/>
+        subject where 1=1 <![CDATA[ and parent_id > "0"]]>
+    </select>
 </mapper>

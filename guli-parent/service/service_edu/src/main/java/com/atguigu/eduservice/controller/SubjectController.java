@@ -2,6 +2,7 @@ package com.atguigu.eduservice.controller;
 
 
 import com.atguigu.commonutils.Result;
+import com.atguigu.eduservice.entity.subject.OneSubject;
 import com.atguigu.eduservice.service.SubjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * <p>
@@ -41,6 +44,21 @@ public class SubjectController {
         //上传过来的Excel文件
         subjectService.saveSubject(file, subjectService);
         return Result.ok();
+    }
+
+    /**
+     * 课程列表
+     *
+     * @return  对象实体
+     */
+    @RequestMapping(value = "getAllSubject", method = RequestMethod.GET)
+    //list集合泛型是一级分类
+    public Result getAllSubject() {
+        List<OneSubject> list = subjectService.getAllOneTwoSubject();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+        return Result.ok().data("list", list);
     }
 }
 
