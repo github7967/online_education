@@ -37,7 +37,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void saveCourseInfo(CourseInfo courseInfo) {
+    public String saveCourseInfo(CourseInfo courseInfo) {
         Course course = new Course();
         BeanUtils.copyProperties(courseInfo, course);
         course.setBuyCount(0L).setViewCount(0L).setVersion(1L).setStatus("Draft");
@@ -51,5 +51,6 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         CourseDescription courseDescription = new CourseDescription();
         courseDescription.setDescription(courseInfo.getDescription()).setId(cid);
         courseDescriptionService.saveCourseDescription(courseDescription);
+        return cid;
     }
 }

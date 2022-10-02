@@ -17,9 +17,16 @@ import java.util.List;
 @Repository //只是为了让service层的注入显示正常而已
 public interface SubjectMapper extends BaseMapper<Subject> {
     /**
-     * 课程分类列表
+     * 查询课程分类列表
      *
      * @return  对象实体
      */
     List<Subject> getgetAllTwoSubject();
+
+    /**
+     *  添加一级分类
+     *
+     * @param existOneSubject   一级分类实体
+     */
+    void saveOneSubject(Subject existOneSubject);
 }

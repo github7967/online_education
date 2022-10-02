@@ -37,10 +37,10 @@ public class Course implements Serializable {
     @ApiModelProperty(value = "课程讲师ID")
     private String teacherId;
 
-    @ApiModelProperty(value = "课程专业ID")
+    @ApiModelProperty(value = "二级ID")
     private String subjectId;
 
-    @ApiModelProperty(value = "课程专业父级ID")
+    @ApiModelProperty(value = "一级ID")
     private String subjectParentId;
 
     @ApiModelProperty(value = "课程标题")

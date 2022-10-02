@@ -56,9 +56,6 @@ public class SubjectController {
     //list集合泛型是一级分类
     public Result getAllSubject() {
         List<OneSubject> list = subjectService.getAllOneTwoSubject();
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
         return Result.ok().data("list", list);
     }
 }

@@ -30,4 +30,11 @@ public interface SubjectService extends IService<Subject> {
      * @return  对象实体
      */
     List<OneSubject> getAllOneTwoSubject();
+
+    /**
+     *  添加一级分类
+     *
+     * @param existOneSubject   一级分类实体
+     */
+    void saveOneSubject(Subject existOneSubject);
 }

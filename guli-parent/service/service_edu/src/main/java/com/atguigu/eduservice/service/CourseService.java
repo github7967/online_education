@@ -19,5 +19,5 @@ public interface CourseService extends IService<Course> {
      * @param courseInfo    信息实体
      * @return
      */
-    void saveCourseInfo(CourseInfo courseInfo);
+    String saveCourseInfo(CourseInfo courseInfo);
 }

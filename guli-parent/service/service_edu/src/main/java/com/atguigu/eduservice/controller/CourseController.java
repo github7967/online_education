@@ -34,8 +34,8 @@ public class CourseController {
     @ApiOperation(value = "添加课程基本信息")
     @RequestMapping(value = "addCourseInfo", method = RequestMethod.POST)
     public Result addCourseInfo(@RequestBody CourseInfo courseInfo) {
-        courseService.saveCourseInfo(courseInfo);
-        return Result.ok();
+        String id = courseService.saveCourseInfo(courseInfo);
+        return Result.ok().data("courseId", id);
     }
 }
 

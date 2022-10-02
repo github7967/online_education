@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
@@ -41,6 +42,7 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> impl
      * @param file  Excel文件
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveSubject(MultipartFile file, SubjectService subjectService) {
         try {
@@ -61,6 +63,7 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> impl
      *
      * @return  对象实体
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public List<OneSubject> getAllOneTwoSubject() {
         //查询出所有的一级分类
@@ -97,5 +100,16 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> impl
             oneSubject.setChildren(list);
         }
         return finalSubjectList;
+    }
+
+    /**
+     *  添加一级分类
+     *
+     * @param existOneSubject   一级分类实体
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void saveOneSubject(Subject existOneSubject) {
+        subjectMapper.saveOneSubject(existOneSubject);
     }
 }
