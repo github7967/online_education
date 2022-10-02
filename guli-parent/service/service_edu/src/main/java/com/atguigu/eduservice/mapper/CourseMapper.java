@@ -1,25 +1,23 @@
 package com.atguigu.eduservice.mapper;
 
-import com.atguigu.eduservice.entity.Subject;
+import com.atguigu.eduservice.entity.Course;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
  * <p>
- * 课程科目 Mapper 接口
+ * 课程 Mapper 接口
  * </p>
  *
  * @author LiSong
- * @since 2022-09-25
+ * @since 2022-09-30
  */
 @Repository //只是为了让service层的注入显示正常而已
-public interface SubjectMapper extends BaseMapper<Subject> {
+public interface CourseMapper extends BaseMapper<Course> {
     /**
-     * 课程分类列表
+     * 添加课程信息
      *
-     * @return  对象实体
+     * @param course
      */
-    List<Subject> getgetAllTwoSubject();
+    int saveCourse(Course course);
 }

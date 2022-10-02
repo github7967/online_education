@@ -57,7 +57,7 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> impl
     }
 
     /**
-     * 课程列表
+     * 课程分类列表
      *
      * @return  对象实体
      */

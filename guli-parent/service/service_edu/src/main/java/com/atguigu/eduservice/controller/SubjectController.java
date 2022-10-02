@@ -24,7 +24,7 @@ import java.util.List;
  * @author LiSong
  * @since 2022-09-25
  */
-@Api(description = "课程管理")
+@Api(description = "课程分类管理")
 @RestController
 @CrossOrigin
 @RequestMapping("/eduservice/subject")
@@ -47,10 +47,11 @@ public class SubjectController {
     }
 
     /**
-     * 课程列表
+     * 课程分类列表
      *
      * @return  对象实体
      */
+    @ApiOperation(value = "查询课程分类列表")
     @RequestMapping(value = "getAllSubject", method = RequestMethod.GET)
     //list集合泛型是一级分类
     public Result getAllSubject() {

@@ -25,7 +25,7 @@ public interface SubjectService extends IService<Subject> {
     void saveSubject(MultipartFile file, SubjectService subjectService);
 
     /**
-     * 课程列表
+     * 课程分类列表
      *
      * @return  对象实体
      */
