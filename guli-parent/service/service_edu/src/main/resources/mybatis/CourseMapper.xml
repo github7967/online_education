@@ -7,4 +7,4 @@
         course(id, teacher_id, subject_id, subject_parent_id, title, price, lesson_num, cover, buy_count, view_count, version, status, is_deleted, gmt_create, gmt_modified)
         values(#{id}, #{teacherId}, #{subjectId}, #{subjectParentId}, #{title}, #{price}, #{lessonNum}, #{cover}, #{buyCount}, #{viewCount}, #{version}, #{status}, #{isDeleted}, #{gmtCreate}, #{gmtModified})
     </insert>
-</mapper>online_education
+</mapper>
