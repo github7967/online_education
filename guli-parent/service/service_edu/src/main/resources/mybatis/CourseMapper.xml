@@ -7,4 +7,45 @@
         course(id, teacher_id, subject_id, subject_parent_id, title, price, lesson_num, cover, buy_count, view_count, version, status, is_deleted, gmt_create, gmt_modified)
         values(#{id}, #{teacherId}, #{subjectId}, #{subjectParentId}, #{title}, #{price}, #{lessonNum}, #{cover}, #{buyCount}, #{viewCount}, #{version}, #{status}, #{isDeleted}, #{gmtCreate}, #{gmtModified})
     </insert>
+
+    <!-- 修改课程信息 -->
+    <update id="updateCourseInfo">
+        update course set teacher_id = #{teacherId}, subject_id = #{subjectId}, title = #{title}, price = #{price}, lesson_num = #{lessonNum},
+                          cover = #{cover}, buy_count = #{buyCount}, view_count = #{viewCount}, version = #{version}, status = #{status}, is_deleted = #{isDeleted}
+        where id = #{id}
+    </update>
+
+    <!-- 根据courseId修改发布状态 -->
+    <update id="publishCourse">
+        update course set status = #{status} where id = #{id}
+    </update>
+
+    <!-- 根据课程id删除课程 -->
+    <delete id="removeCourseByCourseId">
+        delete from course where id = #{courseId}
+    </delete>
+
+    <select id="getCourseInfoById" resultType="com.atguigu.eduservice.entity.Course">
+        select * from course where id = #{courseId}
+    </select>
+
+    <!-- 根据课程id查询课程确认信息 -->
+    <select id="getPulishCourseInfo" resultType="com.atguigu.eduservice.entity.vo.CoursePublish">
+        SELECT ec.id, ec.title, ec.price, ec.lesson_num AS lessonNum, ec.cover,
+			 et.name AS teacherName,
+			 es1.title AS subjectLevelOne,
+			 es2.title AS subjectLevelTwo
+        FROM course ec LEFT JOIN course_description ecd on ec.id = ecd.id
+							 LEFT JOIN teacher et on ec.teacher_id = et.id
+							 LEFT JOIN subject es1 on ec.subject_parent_id = es1.id
+							 LEFT JOIN subject es2 on ec.subject_id = es2.id
+							 WHERE ec.id = #{courseId}
+    </select>
+
+    <!-- 分页带条件查询课程 -->
+    <select id="getCourseList" resultType="com.atguigu.eduservice.entity.Course">
+        SELECT * FROM course
+        order by gmt_create desc limit #{limit}, #{current}
+        where 1=1
+    </select>
 </mapper>

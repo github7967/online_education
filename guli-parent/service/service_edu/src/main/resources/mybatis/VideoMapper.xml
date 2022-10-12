@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.eduservice.mapper.VideoMapper">
+    <!-- 添加课程小节 -->
+    <insert id="addVideo">
+        insert into video(id, course_id, chapter_id, title, video_source_id, video_original_name, sort, play_count,
+                          is_free, duration, status, size, version, gmt_create, gmt_modified)
+        values (#{id}, #{courseId}, #{chapterId}, #{title}, #{videoSourceId}, #{videoOriginalName}, #{sort}, #{playCount},
+                #{isFree}, #{duration}, #{status}, #{size}, #{version}, #{gmtCreate}, #{gmtModified})
+    </insert>
 
+    <!-- 删除课程小节 -->
+    <delete id="deleteVideoById">
+        delete from video where id = #{videoId}
+    </delete>
+
+    <!-- 根据课程id删除小节 -->
+    <delete id="removeVideoByCourseId">
+        delete from video where course_id = #{courseId}
+    </delete>
+
+    <select id="selectVideoById" resultType="com.atguigu.eduservice.entity.Video">
+        select id, course_id, chapter_id, title, video_source_id, video_original_name, sort, play_count, is_free, duration, status, size, version, gmt_create, gmt_modified
+        from video where course_id = #{courseId}
+    </select>
+
+    <select id="selectVideoCount" resultType="java.lang.Integer">
+        select count(*) from video where chapter_id = #{chapterId}
+    </select>
 </mapper>

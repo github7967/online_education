@@ -5,4 +5,16 @@
     <insert id="saveCourseDescription">
         insert into course_description(id, description, gmt_create, gmt_modified) values (#{id}, #{description}, #{gmtCreate}, #{gmtModified})
     </insert>
+
+    <update id="updateCourseDescriptionById">
+        update course_description set description = #{description} where id = #{id}
+    </update>
+    <!-- 根据课程id删除描述 -->
+    <delete id="removeCourseDescriptionByCourseId">
+        delete from course_description where id = #{courseId}
+    </delete>
+
+    <select id="getCourseDescriptionById" resultType="com.atguigu.eduservice.entity.CourseDescription">
+        select * from course_description where id = #{courseId}
+    </select>
 </mapper>

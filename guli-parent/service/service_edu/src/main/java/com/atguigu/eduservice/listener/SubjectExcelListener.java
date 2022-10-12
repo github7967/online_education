@@ -34,7 +34,7 @@ public class SubjectExcelListener extends AnalysisEventListener<SubjectData> {
             existOneSubject.setTitle(subjectData.getOneSubjectName());   //一级分类名称
             //进行添加  (后期修改)
             subjectService.save(existOneSubject);
-//            subjectService.saveOneSubject(existOneSubject);
+            subjectService.saveOneSubject(existOneSubject);
         }
         //添加二级分类, 判断一级分类是否重复
         String pid = existOneSubject.getId();   //获取一级分类id值
