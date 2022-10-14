@@ -27,4 +27,14 @@
     <select id="selectVideoCount" resultType="java.lang.Integer">
         select count(*) from video where chapter_id = #{chapterId}
     </select>
+
+    <!-- 根据小节id获取到视频id -->
+    <select id="getVideoById" resultType="com.atguigu.eduservice.entity.Video">
+        select video_source_id from video where id = #{videoId}
+    </select>
+
+    <!-- 根据课程id查询课程所有的视频id -->
+    <select id="selectVideoByIds" resultType="java.lang.String">
+        select video_source_id from video where course_id = #{courseId}
+    </select>
 </mapper>

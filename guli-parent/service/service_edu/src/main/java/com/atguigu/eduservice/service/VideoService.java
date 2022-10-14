@@ -17,6 +17,12 @@ public interface VideoService extends IService<Video> {
 
     List<Video> selectlistVideo(String courseId);
 
+    /**
+     * 根据chapterid章节id查询小节表
+     *
+     * @param chapterId     章节id
+     * @return
+     */
     int selectVideoCount(String chapterId);
 
     /**
@@ -42,4 +48,12 @@ public interface VideoService extends IService<Video> {
      * @return
      */
     void removeVideoByCourseId(String courseId);
+
+    /**
+     * 根据小节id获取到视频id
+     *
+     * @param videoId   小节id
+     * @return  video实体
+     */
+    String getVideoById(String videoId);
 }

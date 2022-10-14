@@ -17,9 +17,19 @@ import java.util.List;
  */
 @Repository //只是为了让service层的注入显示正常而已
 public interface VideoMapper extends BaseMapper<Video> {
-
+    /**
+     * 根据课程id查询课程所有的小节
+     *
+     * @return  小节实体集合
+     */
     List<Video> selectVideoById(@Param("courseId") String courseId);
 
+    /**
+     * 根据chapterid章节id查询小节表
+     *
+     * @param chapterId     章节id
+     * @return
+     */
     int selectVideoCount(String chapterId);
 
     /**
@@ -45,4 +55,20 @@ public interface VideoMapper extends BaseMapper<Video> {
      * @return
      */
     void removeVideoByCourseId(String courseId);
+
+    /**
+     * 根据小节id获取到视频id
+     *
+     * @param videoId   小节id
+     * @return  video实体
+     */
+    Video getVideoById(String videoId);
+
+    /**
+     * 根据课程id查询课程所有的视频id
+     *
+     * @param courseId  课程id
+     * @return  视频id集合
+     */
+    List<String> selectVideoByIds(String courseId);
 }
